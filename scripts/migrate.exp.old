@@ -1,0 +1,26 @@
+#!/usr/bin/expect -f
+
+set timeout 30
+
+
+#spawn screen -S hasura hasura init flex-hasura-api_clone --endpoint https://flex-hasura-api.herokuapp.com --admin-secret secret20211130
+
+# flex-hasura-api_clone
+spawn hasura init clone --endpoint https://flex-hasura-api.herokuapp.com --admin-secret secret20211130 --skip-update-check
+
+expect "(Y/n)" { send "\r" }
+
+#expect "(Y/n)" { send "Y" }
+
+#send "\n"
+
+#send "\r"
+
+#send "\01d"    # detach from the screen (ctrl-a + d)
+
+#sleep 10
+
+expect eof
+
+#interact
+

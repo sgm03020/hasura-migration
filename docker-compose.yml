@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+    # Run the node application
+    cli-app:
+        # image: sgm03020/hasura-cli-alpine-glibc
+        image: sgm03020/hasura-cli-ubuntu
+        container_name: cli
+        # restart: unless-stopped
+        environment:
+          ENDPOINT: ${ENDPOINT:-'http://localhost:8080'}
+          SECRET: ${SECRET:-mysecret}
+          CLONE: ${CLONE:-clone}
+          TARGET: ${TARGET:-http://localhost:8080}
+          TARGET_SECRET: ${TARGET_SECRET:-mysecret}
+        tty: true
+        stdin_open: true
+        volumes:
+        - ./scripts:/scripts
+        - ./migrations:/migrations
+        # commandでhasura initの先へ直接expectを使い進むのは上手くいかない
+        # 1) OK
+        # command: "screen -S hasura-cli '/scripts/migrate.exp'"
+        # 2)
+        command: "screen -S hasura-cli '/scripts/migrate.sh'"
+

@@ -1,0 +1,35 @@
+#!/usr/bin/expect -df
+
+set timeout 60
+
+# shell variables to expect variables
+set ENV_CLONE $env(CLONE)
+
+# clear migrations contents
+#system "export LANG=C"
+#system "rm -rf /migrations/* >/dev/null 2>&1"
+system "rm -rf /migrations/*"
+system "cd /migrations"
+
+# start
+# flex-hasura-api_clone 
+spawn hasura init $ENV_CLONE --endpoint https://flex-hasura-api.herokuapp.com --admin-secret secret20211130 --skip-update-check
+
+expect {
+    -re ".*Init.*" {
+        sleep 10
+        send "\r"
+    }
+}
+
+expect eof
+send "\r"
+
+#expect eof
+#system "chmod 777 -R /migrations/*"
+
+
+interact
+
+
+

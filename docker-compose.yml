@@ -3,7 +3,8 @@ services:
     # Run the node application
     cli-app:
         # image: sgm03020/hasura-cli-alpine-glibc
-        image: sgm03020/hasura-cli-ubuntu
+        # image: sgm03020/hasura-cli-ubuntu
+        image: sgm03020/hasura-cli-postgres13
         container_name: cli
         # restart: unless-stopped
         environment:

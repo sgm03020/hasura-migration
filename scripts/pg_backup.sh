@@ -53,8 +53,8 @@ else
    # 1) psql postgresql://postgres:postgrespassword@taat-api-202206.tk:43254/postgres
    #    psql -f ./backup-data-only.sql "${DB_URL}?user=postgres&password=postgrespassword"
 
-   psql -f ./backup-schema-only.sql $DB_URL
-   psql -f ./backup-data-only.sql $DB_URL
+   #psql -f ./backup-schema-only.sql $DB_URL
+   #psql -f ./backup-data-only.sql $DB_URL
    :
 fi
 

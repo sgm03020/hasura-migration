@@ -17,9 +17,9 @@ if [ -z $TARGET ]; then
 else
   # migrate metadata
   if [[ "$PWD" == "/migrations/${CLONE}" ]]; then
-    hasura migrate apply --endpoint $TARGET --database-name default --admin-secret $TARGET_SECRET --disable-interactive
+    hasura migrate apply --endpoint $TARGET --database-name default --admin-secret $TARGET_SECRET --disable-interactive --skip-update-check
     sleep 3
-    hasura seed apply --endpoint $TARGET --database-name default --admin-secret $TARGET_SECRET --disable-interactive
+    hasura seed apply --endpoint $TARGET --database-name default --admin-secret $TARGET_SECRET --disable-interactive --skip-update-check
   fi
 fi
 
